@@ -11,10 +11,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
@@ -23,32 +24,37 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name="Usuario")
-public class Usuario implements Serializable {
+@Table(name="Proveedor")
+public class Proveedor implements Serializable{
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idUsuario")
-    private Integer idUsuario;
+    @Column(name="idProveedor")
+    private Integer idProveedor;
     
     @NotEmpty
-    private String nombre;
+    @Column(name="NIT")
+    private String nit;
     
     @NotEmpty
-    private String password;
+    @Column(name="No_cuenta")
+    private String noCuenta;
+    
+    @NotNull
+    @Column(name="saldoPendiente")
+    @Min(value = 0)
+    private double saldoPendiente;
     
     @NotEmpty
     private String direccion;
     
     @NotEmpty
-    private String correo;
+    private String nombre;
     
-    @NotEmpty
     private String telefono;
     
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "Puesto_id")
-    private Puesto puesto;
+    @Email
+    private String correo;
     
 }

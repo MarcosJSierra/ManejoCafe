@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
@@ -23,32 +24,27 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name="Usuario")
-public class Usuario implements Serializable {
+@Table(name="Inventario")
+public class Inventario implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idUsuario")
-    private Integer idUsuario;
+    @Column(name="idInventario")
+    private Integer idInventario;
+    
+    @NotEmpty
+    @Column(name="descripcionInventario")
+    private String descripcionInventario;
     
     @NotEmpty
     private String nombre;
     
-    @NotEmpty
-    private String password;
+    @NotNull
+    private boolean complemento;
     
-    @NotEmpty
-    private String direccion;
-    
-    @NotEmpty
-    private String correo;
-    
-    @NotEmpty
-    private String telefono;
-    
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "Puesto_id")
-    private Puesto puesto;
-    
+    @ManyToOne
+    @JoinColumn(name="idDimension")
+    private Dimension dimension;
+        
 }

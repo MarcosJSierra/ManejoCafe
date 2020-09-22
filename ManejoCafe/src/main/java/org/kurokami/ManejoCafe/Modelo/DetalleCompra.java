@@ -6,13 +6,13 @@
 package org.kurokami.ManejoCafe.Modelo;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import lombok.Data;
 
 /**
@@ -21,31 +21,29 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name="DetalleOrden")
-public class DetalleOrden implements Serializable {
-    private static final double serialVersionUID = 1L;
+@Table(name = "detalleCompra")
+public class DetalleCompra implements Serializable{
+    private static final long serialVersionUID = 1L;
     
     @EmbeddedId
-    private DetalleOrdenKey id;
+    private DetalleOrdenKey detalleOrdenKey;
     
     @ManyToOne
-    @MapsId("idOrden")
-    @JoinColumn(name="idOrden")
-    private Orden orden;
-   
+    @MapsId("idCompra")
+    @JoinColumn(name="idCompra")
+    private Compra compra;
+    
     @ManyToOne
-    @MapsId("idMenu")
-    @JoinColumn(name="idMenu")
-    private Menu menu;
+    @MapsId("idInventario")
+    @JoinColumn(name="idInventario")
+    private Inventario inventario;
     
-    private Integer cantidad;
+    @Min(value = 0)
+    private float cantidad;
     
-    @Column(name="precioVenta")
-    private Double precioVenta;
+    @Min(value = 0)
+    private double subtotal;
     
-    private Double subtotal;
-    
-    
-    
-    
+    @Min(value = 0)
+    private double precio;
 }

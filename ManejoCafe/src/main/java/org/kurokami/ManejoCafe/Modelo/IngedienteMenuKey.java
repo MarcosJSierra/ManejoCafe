@@ -16,12 +16,10 @@ import lombok.Data;
  */
 @Embeddable
 @Data
-public class DetalleOrdenKey implements Serializable {
-    @Column(name = "menuId")
-    Integer idMenu;
+public class IngedienteMenuKey implements Serializable {
+    @Column(name="idMenu")
+    Long idMenu;
     
-    @Column(name = "idOrden")
-    Integer idOrden;
-    
-    
+    @Column(name="idInventario")
+    Long idInvetario;
 }

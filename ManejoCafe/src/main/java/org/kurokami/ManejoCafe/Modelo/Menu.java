@@ -6,6 +6,7 @@
 package org.kurokami.ManejoCafe.Modelo;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,8 @@ public class Menu implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idMenu;
+    @Column(name="idMenu")
+    private Integer idMenu;
     
     @NotEmpty
     private String nobmre;

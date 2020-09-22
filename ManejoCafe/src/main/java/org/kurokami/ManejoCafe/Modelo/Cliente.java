@@ -6,6 +6,7 @@
 package org.kurokami.ManejoCafe.Modelo;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,10 +29,11 @@ import lombok.Data;
 @Table(name="Cliente")
 public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+    //
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private int idCliente;
+    @Column(name="idCliente")
+    private Integer idCliente;
     
     @NotEmpty
     private String nombre;
@@ -41,10 +43,10 @@ public class Cliente implements Serializable {
     
     @NotEmpty
     @Email
-    private String Correo;
+    private String correo;
     
     @NotEmpty
-    private String  Telefono;
+    private String  telefono;
     
     @Min(value = 0)
     private double saldo;

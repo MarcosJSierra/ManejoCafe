@@ -6,6 +6,7 @@
 package org.kurokami.ManejoCafe.Modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,41 +15,37 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
  *
  * @author marcos
  */
-@Entity
 @Data
-@Table(name="Usuario")
-public class Usuario implements Serializable {
+@Entity
+@Table(name="Lote")
+public class Lote implements Serializable{
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idUsuario")
-    private Integer idUsuario;
+    @Column(name="idLote")
+    private Integer idLote;
     
-    @NotEmpty
-    private String nombre;
+    @Temporal(TemporalType.DATE)
+    @NotNull
+    private Date fecha;
     
-    @NotEmpty
-    private String password;
+    @NotNull
+    private int existencia;
     
-    @NotEmpty
-    private String direccion;
+    @NotNull
+    private Boolean estado;
     
-    @NotEmpty
-    private String correo;
-    
-    @NotEmpty
-    private String telefono;
-    
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "Puesto_id")
-    private Puesto puesto;
-    
+    @ManyToOne
+    @JoinColumn(name = "idInventario")
+    private Inventario inventario;
 }

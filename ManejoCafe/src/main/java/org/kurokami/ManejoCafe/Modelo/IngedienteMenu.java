@@ -6,15 +6,16 @@
 package org.kurokami.ManejoCafe.Modelo;
 
 import java.io.Serializable;
-import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
@@ -23,32 +24,24 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name="Usuario")
-public class Usuario implements Serializable {
+@Table(name="IngredienteMenu")
+public class IngedienteMenu implements Serializable {
     private static final long serialVersionUID = 1L;
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idUsuario")
-    private Integer idUsuario;
+    @EmbeddedId
+    private DetalleOrdenKey detalleOrdenKey;
     
-    @NotEmpty
-    private String nombre;
+    @ManyToOne
+    @MapsId("idMenu")
+    @JoinColumn(name="idMenu")
+    private Menu menu;
     
-    @NotEmpty
-    private String password;
     
-    @NotEmpty
-    private String direccion;
+    @ManyToOne
+    @MapsId("idInventario")
+    @JoinColumn(name="idInventario")
+    private Inventario inventario;
     
-    @NotEmpty
-    private String correo;
-    
-    @NotEmpty
-    private String telefono;
-    
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "Puesto_id")
-    private Puesto puesto;
-    
+    @NotNull
+    private double cantidad;
 }

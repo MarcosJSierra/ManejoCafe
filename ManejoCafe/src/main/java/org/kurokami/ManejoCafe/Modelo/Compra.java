@@ -6,6 +6,7 @@
 package org.kurokami.ManejoCafe.Modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +15,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
@@ -23,32 +28,29 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name="Usuario")
-public class Usuario implements Serializable {
+@Table(name="Compra")
+public class Compra implements Serializable{
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idUsuario")
-    private Integer idUsuario;
+    @Column(name="idCompra")
+    private Integer idCompra;
+    
+    @NotNull
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
     
     @NotEmpty
-    private String nombre;
+    @Column(name="no_factura")
+    private String noFactura;
     
-    @NotEmpty
-    private String password;
+    @NotNull
+    @Min(value = 0)
+    private double total;
     
-    @NotEmpty
-    private String direccion;
-    
-    @NotEmpty
-    private String correo;
-    
-    @NotEmpty
-    private String telefono;
-    
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "Puesto_id")
-    private Puesto puesto;
+    @ManyToOne
+    @JoinColumn(name="idProveedor")
+    private Proveedor proveedor;
     
 }

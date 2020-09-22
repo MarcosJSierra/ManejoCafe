@@ -11,8 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import lombok.Data;
@@ -23,32 +21,15 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name="Usuario")
-public class Usuario implements Serializable {
+@Table(name="Dimension")
+public class Dimension implements Serializable{
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idUsuario")
-    private Integer idUsuario;
+    @Column(name="idDimension")
+    private Integer idDimension;
     
     @NotEmpty
     private String nombre;
-    
-    @NotEmpty
-    private String password;
-    
-    @NotEmpty
-    private String direccion;
-    
-    @NotEmpty
-    private String correo;
-    
-    @NotEmpty
-    private String telefono;
-    
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "Puesto_id")
-    private Puesto puesto;
-    
 }

@@ -7,6 +7,7 @@ package org.kurokami.ManejoCafe.Modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,13 +33,16 @@ public class Orden implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private int idOrden;
+    @Column(name="idOrden")
+    private Integer idOrden;
     
     @NotEmpty
+    @Column(name="No_factura")
     private String noFactura;
     
     @Temporal(TemporalType.DATE)
     @NotNull
+    @Column(name="fechaOrden")
     private Date fechaOrden;
     
     @NotNull
