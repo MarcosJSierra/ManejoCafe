@@ -6,11 +6,16 @@ and open the template in the editor.
 -->
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Cafeteria Grano de Cafe</title>
-        <meta charset="UTF-8" />
+    <head th:replace="layouts/plantilla1 :: head">
+        <title>Cafes</title>
     </head>
     <body>
-        <div>Hola Mundo</div>
+        <div class="card border-light mb-3" >
+            <div class="card-header">
+                <h2 class="ml-3">
+                    Bienvenido a Brew-bar Grano de Café
+                </h2>
+            </div>
+        </div>
     </body>
 </html>
