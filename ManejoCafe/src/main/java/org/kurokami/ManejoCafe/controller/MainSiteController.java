@@ -5,10 +5,13 @@
  */
 package org.kurokami.ManejoCafe.controller;
 
+import org.kurokami.ManejoCafe.Modelo.Cliente;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -21,4 +24,15 @@ public class MainSiteController {
     public String getIndex(@AuthenticationPrincipal User user){
         return "mainsite/index";
     }
+    @GetMapping("/cliente/registro")
+    public String regsitroCliente(Cliente cliente, Model model){
+        model.addAttribute(cliente);
+        return "mainsite/registroClientes";
+    }
+    
+    @PostMapping("/cliente/registrar")
+    public String guardarRegistroCliente(Cliente cliente){
+        return "redirect:/";
+    }
+    
 }
