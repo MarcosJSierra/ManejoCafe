@@ -38,10 +38,10 @@ and open the template in the editor.
                                     [[#{barra.ventas}]]
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
-                                    <a class="dropdown-item" href="#">Pagina Principal</a>
-                                    <a class="dropdown-item" href="#">Nueva Orden</a>
-                                    <a class="dropdown-item" href="#">Atender Orden</a>
-                                    <a class="dropdown-item" href="#">Cobrar Saldo</a>
+                                    <a class="dropdown-item" href="#">[[#{barra.ventas.principal}]]</a>
+                                    <a class="dropdown-item" href="#">[[#{barra.ventas.nueva-orden}]]</a>
+                                    <a class="dropdown-item" href="#">[[#{barra.ventas.atender-orden}]]</a>
+                                    <a class="dropdown-item" href="#">[[#{barra.ventas.cobrar-saldo}]]</a>
                                 </div>
                             </li>
                             <li class="nav-item mr-3 nav-item dropdown">
@@ -49,10 +49,9 @@ and open the template in the editor.
                                     <i class="fas fa-user"></i>
                                     <span th:text="#{barra.bienvenido}">Bienvenido:</span>
                                 </a>
-                                <a class="dropdown-item" href="#">Registrar</a>
-                                <a class="dropdown-item" href="#">Registrar</a>
+                                
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
+                                    <a class="dropdown-item" href="#">[[#{barra.registrar}]]</a>
                                     <form method="POST" th:action="@{/logout}">
                                         <a href="#" onclick="this.parentNode.submit();" class="dropdown-item">
                                             <i class="fas fa-user-times"></i> [[#{barra.salir}]]
