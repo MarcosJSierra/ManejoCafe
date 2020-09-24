@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layouts/plantilla1 :: head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:replace="layouts/plantilla1 :: header1">
+        </header>
+        <div class="container">
+            <div class="w-50 mx-auto mt-5">
+                <div class="card">
+                    <div class="card-header text-center" >
+                        <h3 style="color: #5b3924" class="mt-2"><i class="fas fa-user-friends"></i> Log In</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" th:action="@{/login}">
+                            <div class="form-group">
+                                <label style="color: #5b3924" for="correo">
+                                    Correo
+                                </label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="correo1"><i class="far fa-envelope"></i></span>
+                                    </div>
+                                   <input type="text" name="correo" class="form-control" aria-label="Username" aria-describedby="correo1" id="username" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="color: #5b3924" for="contrasenia" >
+                                    Contraseña
+                                </label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="contra1"><i class="fas fa-key"></i></span>
+                                    </div>
+                                   <input type="password" name="contrasenia" class="form-control" aria-label="Password" aria-describedby="contra11" id="password" />
+                                </div>
+                            </div>
+                            <input type="submit" value="Login" name="log" class="btn btn-success"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fixed-bottom">
+            <footer th:replace="layouts/plantilla1 :: footer">
+            </footer>
+        </div>
+    </body>
+
+</html>
