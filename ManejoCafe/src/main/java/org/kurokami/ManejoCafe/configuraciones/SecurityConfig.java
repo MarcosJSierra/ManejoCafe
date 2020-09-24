@@ -40,6 +40,6 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
                     .hasAnyRole("USER", "ADMIN")
                 .and()
                     .formLogin()
-                    .loginPage("/sec/login");
+                    .loginPage("/login");
     }
 }
