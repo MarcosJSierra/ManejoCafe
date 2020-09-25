@@ -23,22 +23,39 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="nombre" class="font-weight-bold" style="color: #5b3924">
-                                    Nombre
+                                    [[#{campo.nombre}]]
                                 </label>
-                                <input type="text" class="form-control" name="nombre" placeholder="Username" th:field="*{nombre}"/>  
-                            </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="nombre1"><i class="fas fa-user-tag"></i></span>
+                                    </div>
+                                   <input type="text" name="nombre" class="form-control" aria-label="Username" aria-describedby="nombre1" placeholder="Nombre" th:field="*{nombre}"/>
+                                </div>
+                            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="font-italic ml-3 " style="color: #900c3f">Error Nombre</span>
+                            </div> 
                             <div class="form-group">
                                 <label for="direccion" class="font-weight-bold" style="color: #5b3924">
-                                    Dirección
+                                    [[#{campo.direccion}]]
                                 </label>
-                                <input type="text" class="form-control" name="direccion" placeholder="calle 123" th:field="*{direccion}"/>  
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="direccion1"><i class="fas fa-map-marked-alt"></i></span>
+                                    </div>
+                                   <input type="text" name="direccion" class="form-control" aria-label="Direccion" aria-describedby="direccion1" id="direccion" placeholder="calle 123" th:field="*{direccion}"/>
+                                </div>
+                            <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="font-italic ml-3 " style="color: #900c3f" role="alert">Error Nombre</span>
                             </div>
-                            
                             <div class="form-group">
                                 <label for="telefono" class="font-weight-bold" style="color: #5b3924">
-                                    Telefono
+                                    [[#{campo.telefono}]]
                                 </label>
-                                <input type="text" class="form-control" name="telefono" placeholder="12345678" th:field="*{telefono}"/>  
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="telefono1"><i class="fas fa-mobile-alt"></i></span>
+                                    </div>
+                                   <input type="text" name="telefono" class="form-control" aria-label="Telefono" aria-describedby="telefono1" id="telefono" placeholder="12345678" th:field="*{telefono}"/>
+                                </div>
+                                <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}" class="font-italic ml-3 " style="color: #900c3f" >Error Nombre</span>
                             </div>
                         </div>
                         <div class="card-header" style="background-color: #f2d2b3">
@@ -47,22 +64,33 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="correo" class="font-weight-bold" style="color: #5b3924">
-                                    Correo
+                                    [[#{campo.correo}]]
                                 </label>
-                                <input type="text" class="form-control" name="correo" placeholder="mail@mail.com" th:field="*{correo}"/>  
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="correo1"><i class="far fa-envelope"></i></span>
+                                    </div>
+                                   <input type="text" name="correo" class="form-control" aria-label="Correo" aria-describedby="correo1" placeholder="mail@mail.com" th:field="*{correo}"/>
+                                </div>
+                                <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}" class="font-italic ml-3 " style="color: #900c3f" >Error Nombre</span>
                             </div>
                             <div class="form-group">
                                 <label for="puesto">Puesto</label>
-                                <select class="form-control" id="puesto" th:object="${puesto}" >
-                                    <option value="1" >Administrador</option>
-                                    <option value="2">Barista</option>
+                                <select class="form-control" id="puesto" th:field="*{puesto}">
+                                    <option th:value="${rol1.id}"  th:each="rol1 : ${rol}" th:text="${rol1.nombre}"></option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="contrasenia" class="font-weight-bold" style="color: #5b3924">
-                                    Contraseña
+                                    [[#{campo.contrasenia}]]
                                 </label>
-                                <input type="password" class="form-control" name="contrasenia" th:field="*{password}"/>  
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="correo1"><i class="fas fa-key"></i></span>
+                                    </div>
+                                   <input type="password" name="contrasenia" class="form-control" aria-label="Password" aria-describedby="password1" th:field="*{password}" />
+                                </div>
+                                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="font-italic ml-3 " style="color: #900c3f">Error Nombre</span>
                             </div>
                         </div>
                         <div class="card-body">

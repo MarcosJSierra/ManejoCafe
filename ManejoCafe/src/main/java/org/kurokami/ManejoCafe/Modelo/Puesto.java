@@ -19,9 +19,11 @@ import lombok.Data;
  *
  * @author marcos
  */
-@Entity
+
 @Data
-@Table(name="Puesto")
+@Entity
+@Table(name = "puesto",
+        schema = "manejoCafe")
 public class Puesto implements Serializable{
     private static final long serialVersionUID = 1L;
     
