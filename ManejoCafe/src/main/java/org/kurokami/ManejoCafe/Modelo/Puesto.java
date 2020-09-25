@@ -20,7 +20,7 @@ import lombok.Data;
  * @author marcos
  */
 
-@Data
+
 @Entity
 @Data
 @Table(name="puesto")
