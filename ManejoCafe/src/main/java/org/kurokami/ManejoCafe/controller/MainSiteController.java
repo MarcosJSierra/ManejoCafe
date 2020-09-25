@@ -38,11 +38,22 @@ public class MainSiteController {
     @GetMapping("/cliente/registro")
     public String regsitroCliente(Cliente cliente, Model model){
         model.addAttribute(cliente);
+        var rol = mainsiteService.puestoPorId(3);
+        cliente.setPuesto(rol);
+        log.info(rol.toString());
+        model.addAttribute("rol", rol);
         return "mainsite/registroClientes";
     }
     
     @PostMapping("/cliente/registrar")
-    public String guardarRegistroCliente(Cliente cliente){
+    public String guardarRegistroCliente(@Valid Cliente cliente, Errors errors, Model model){
+        log.info(cliente.toString());
+        if(errors.hasErrors()){
+            model.addAttribute(cliente);
+            var rol = mainsiteService.puestoPorId(3);
+            model.addAttribute("rol", rol);
+            return "mainsite/registroClientes";
+        }
         return "redirect:/";
     }
     

@@ -26,4 +26,9 @@ public class MainsiteServiceImp implements MainsiteService {
         return (List<Puesto>) puestoDao.findAll();
     }
 
+    @Override
+    public Puesto puestoPorId(int id) {
+        return (Puesto) puestoDao.findById(id).orElse(null);
+    }
+
 }

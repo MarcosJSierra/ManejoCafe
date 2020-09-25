@@ -15,4 +15,6 @@ import org.springframework.stereotype.Service;
  */
 public interface MainsiteService {
     public List<Puesto> listarPuestos();
+    
+    public Puesto puestoPorId(int id);
 }

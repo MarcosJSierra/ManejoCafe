@@ -18,7 +18,8 @@ and open the template in the editor.
         <form th:action="@{/cliente/registrar}" method="post" th:object="${cliente}">
 
 
-
+            <input type="hidden" name="puesto" th:field="*{puesto}" th:value="${rol}"/>
+            <input type="hidden" name="saldo" th:field="*{saldo}" value="0"/>
             <div class="container">
                 <div class="mx-auto mt-5">
                     <div class="card">
