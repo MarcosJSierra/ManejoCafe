@@ -27,7 +27,7 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name="Orden")
+@Table(name="orden")
 public class Orden implements Serializable {
     private static final long serialVersionUID = 1L;
     

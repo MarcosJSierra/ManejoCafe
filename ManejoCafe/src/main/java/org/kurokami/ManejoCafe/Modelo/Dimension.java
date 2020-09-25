@@ -21,7 +21,7 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name="Dimension")
+@Table(name="dimension")
 public class Dimension implements Serializable{
     private static final long serialVersionUID = 1L;
     

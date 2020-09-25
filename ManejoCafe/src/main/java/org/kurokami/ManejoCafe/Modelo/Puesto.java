@@ -22,8 +22,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "puesto",
-        schema = "manejoCafe")
+@Data
+@Table(name="puesto")
 public class Puesto implements Serializable{
     private static final long serialVersionUID = 1L;
     

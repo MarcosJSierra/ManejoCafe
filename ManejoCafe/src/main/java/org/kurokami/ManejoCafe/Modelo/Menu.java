@@ -23,7 +23,7 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name="Menu")
+@Table(name="menu")
 public class Menu implements Serializable{
     private static final long serialVersionUID = 1L;
     
