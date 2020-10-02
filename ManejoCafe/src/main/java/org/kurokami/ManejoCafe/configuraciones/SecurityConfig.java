@@ -25,11 +25,15 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
         auth.inMemoryAuthentication()
                 .withUser("admin")
                 .password("{noop}123")
-                .roles("ADMIN","ÜSER" )
+                .roles("ADMIN","BARISTA" )
                 .and()
                 .withUser("user")
                 .password("{noop}123")
-                .roles("USER");
+                .roles("CLIENTE")
+                .and()
+                .withUser("bar")
+                .password("{noop}123")
+                .roles("BARISTA");
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception{
