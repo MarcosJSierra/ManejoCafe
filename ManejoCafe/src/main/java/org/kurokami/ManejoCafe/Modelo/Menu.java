@@ -44,8 +44,9 @@ public class Menu implements Serializable{
     @NotEmpty
     private String receta;
     
-    @NotEmpty
+    
     private String estado;
     
     
+    private String imagen; 
 }
