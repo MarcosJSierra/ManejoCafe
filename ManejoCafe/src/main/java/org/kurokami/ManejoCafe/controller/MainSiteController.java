@@ -12,6 +12,7 @@ import org.kurokami.ManejoCafe.Modelo.Cliente;
 import org.kurokami.ManejoCafe.Modelo.Puesto;
 import org.kurokami.ManejoCafe.Modelo.Usuario;
 import org.kurokami.ManejoCafe.service.MainsiteService;
+import org.kurokami.ManejoCafe.utils.cifrado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -40,20 +41,20 @@ public class MainSiteController {
         model.addAttribute(cliente);
         var rol = mainsiteService.puestoPorId(3);
         cliente.setPuesto(rol);
-        log.info(rol.toString());
         model.addAttribute("rol", rol);
         return "mainsite/registroClientes";
     }
     
     @PostMapping("/cliente/registrar")
     public String guardarRegistroCliente(@Valid Cliente cliente, Errors errors, Model model){
-        log.info(cliente.toString());
         if(errors.hasErrors()){
             model.addAttribute(cliente);
             var rol = mainsiteService.puestoPorId(3);
             model.addAttribute("rol", rol);
             return "mainsite/registroClientes";
         }
+        cliente.setPassword(cifrado.encriptarPassword(cliente.getPassword()));
+        mainsiteService.registrarCliente(cliente);
         return "redirect:/";
     }
     
@@ -73,7 +74,8 @@ public class MainSiteController {
             model.addAttribute("rol", rol);
             return "mainsite/registroUsuario";
         }
-        log.info(usuario.toString());
+        usuario.setPassword(cifrado.encriptarPassword(usuario.getPassword()));
+        mainsiteService.registrarUsuario(usuario);
         return "redirect:/";
     }
 }

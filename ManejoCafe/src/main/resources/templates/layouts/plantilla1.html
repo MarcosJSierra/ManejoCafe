@@ -37,9 +37,10 @@ and open the template in the editor.
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
                                     <a class="dropdown-item" href="#">[[#{barra.ventas.principal}]]</a>
-                                    <a class="dropdown-item" href="#">[[#{barra.ventas.nueva-orden}]]</a>
-                                    <a class="dropdown-item" href="#">[[#{barra.ventas.atender-orden}]]</a>
-                                    <a class="dropdown-item" href="#">[[#{barra.ventas.cobrar-saldo}]]</a>
+                                    <a class="dropdown-item" href="#">[[#{ventas.ver-menu}]]</a>
+                                    <a class="dropdown-item" href="#" sec:authorize="hasRole('ROLE_ADMIN')">[[#{ventas.nueva-orden}]]</a>
+                                    <a class="dropdown-item" href="#" sec:authorize="hasRole('ROLE_ADMIN, ROLE_CLIENTE')">[[#{ventas.atender-orden}]]</a>
+                                    <a class="dropdown-item" href="#" sec:authorize="hasRole('ROLE_ADMIN')">[[#{ventas.cobrar-saldo}]]</a>
                                 </div>
                             </li>
                             <li class="nav-item mr-3 nav-item dropdown" sec:authorize="isAuthenticated()">
@@ -47,9 +48,10 @@ and open the template in the editor.
                                     <i class="fas fa-user"></i>
                                     <span th:text="#{barra.bienvenido}">Bienvenido:</span>
                                 </a>
-                                
+
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" th:href="@{/cliente/registro}">[[#{barra.registrar}]]</a>
+                                    <a class="dropdown-item" th:href="@{/cliente/registro}" sec:authorize="hasRole('ROLE_ADMIN')">[[#{barra.registrar}]]</a>
+                                    <a class="dropdown-item" th:href="@{/usuario/registro}" sec:authorize="hasRole('ROLE_ADMIN')">[[#{barra.registrar-usuario}]]</a>
                                     <form method="POST" th:action="@{/logout}">
                                         <a href="#" onclick="this.parentNode.submit();" class="dropdown-item">
                                             <i class="fas fa-user-times"></i> [[#{barra.salir}]]
@@ -57,10 +59,17 @@ and open the template in the editor.
                                     </form>
 
                                 </div>
-                                
+
                             </li>
-                            <li class="nav-item px-2" sec:authorize="!isAuthenticated()">
-                                <a th:href="@{/login}" class="nav-link active">[[#{plantilla.iniciar-sesion}]]</a>
+                            <li class="mr-3 nav-item dropdown" sec:authorize="!isAuthenticated()">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user"></i>
+                                    <span th:text="#{plantilla.iniciar-sesion}"></span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a th:href="@{/login}" class="dropdown-item">[[#{plantilla.iniciar-sesion}]]</a>
+                                    <a class="dropdown-item" th:href="@{/cliente/registro}">[[#{barra.registrar}]]</a>
+                                </div>
                             </li>
 
                         </ul>
