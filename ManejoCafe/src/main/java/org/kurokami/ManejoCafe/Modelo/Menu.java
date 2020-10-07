@@ -33,7 +33,7 @@ public class Menu implements Serializable{
     private Integer idMenu;
     
     @NotEmpty
-    private String nobmre;
+    private String nombre;
     
     @NotEmpty
     private String descripcion;
