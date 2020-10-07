@@ -14,13 +14,27 @@ and open the template in the editor.
     <body>
         <header th:replace="/layouts/plantilla1 :: header"></header>
         <div th:if="${platillos != null and !platillos.empty}">
-            <table border="1">
-                <tr>
-                    <th>Nombre platillo</th>
-                </tr>
-            </table>
+            <div class="container mt-4">
+                <div th:each="platillo : ${platillos}">
+                    <div class="card mb-3" style="max-width: 800x;" >
+                        <div class="row no-gutters">
+                            <div class="col-md-2">
+                                <img src="..." class="card-img" alt="..."/>
+                            </div>
+                            <div class="col-md-10 ">
+                                <div class="card-body  w-1000">
+                                    <h5 class="card-title" >[[${platillo.nombre}]]</h5>
+                                    <p class="card-text">[[${platillo.descripcion}]]</p>
+                                    <p class="card-text">Q. [[${platillo.precio}]]</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div th:if="${platillos == null or personas.empty}">
+        <div th:if="${platillos == null or platillos.empty}">
             <p>
                 No hay platillos para desplegar
             </p>

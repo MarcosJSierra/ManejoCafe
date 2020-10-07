@@ -24,14 +24,14 @@ public class VentasController {
     
     @GetMapping("/ventas/")
     public String mainVentas(){
-        return "/ventas/index";
+        return "ventas/index";
     }
     
     @GetMapping("/ventas/menu")
     public String menuVentas(Model model){
         var platillos = ventasService.getTodosLosPlatillos();
         model.addAttribute("platillos", platillos);
-        return "/ventas/menu";
+        return "ventas/menu";
     }
     
     @GetMapping("/ventas/menu/{idMenu}")
