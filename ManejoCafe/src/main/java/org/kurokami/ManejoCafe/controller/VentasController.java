@@ -5,6 +5,7 @@
  */
 package org.kurokami.ManejoCafe.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.kurokami.ManejoCafe.Modelo.Menu;
 import org.kurokami.ManejoCafe.service.VentasService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author marcos
  */
 @Controller
+@Slf4j
 public class VentasController {
     
     @Autowired
@@ -35,7 +37,9 @@ public class VentasController {
     }
     
     @GetMapping("/ventas/menu/{idMenu}")
-    public String infoMenuVentas(Menu menu){
-        return "/ventas/platillo";
+    public String infoMenuVentas(Menu menu, Model model){
+        menu = ventasService.menuPorId(menu.getIdMenu());
+        model.addAttribute("platillo", menu);
+        return "ventas/platillo";
     }
 }

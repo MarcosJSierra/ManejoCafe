@@ -24,7 +24,7 @@ public class VentasServiceImp implements VentasService{
     
     @Override
     public Menu menuPorId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (Menu) menuDao.findById(id).orElse(null);
     }
 
     @Override

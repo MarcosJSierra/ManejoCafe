@@ -13,9 +13,11 @@ and open the template in the editor.
     </head>
     <body>
         <header th:replace="/layouts/plantilla1 :: header"></header>
-        <h2 class="ml-3">
-            Ventas
-        </h2>
+        <div class="alert  w-75 mx-auto mt-4" role="alert" style="background-color: #5b3924">
+            <h2 style="color : #f2eadc" class="card-title ml-4 mt-2">
+                Menú
+            </h2>
+        </div>
         <div class="container">
             <div class="card-deck">
                 <div class=" row row-cols-3 row-cols-md-2">
@@ -26,7 +28,7 @@ and open the template in the editor.
                                 <h5 class="card-title">
                                     <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/menu}"> 
                                         <i class="fas fa-book-reader"></i>
-                                        Consultar Menú
+                                        [[#{ventas.consultar-menu}]]
                                     </a>
                                 </h5>
                                 <p class="card-text ml-4">Consulta todas las bebidas disponibles en nuestro negocio, preparados con el maximo cuidado y cariño.</p>
@@ -41,7 +43,7 @@ and open the template in the editor.
                                 <h5 class="card-title">
                                     <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/menu}"> 
                                         <i class="fas fa-plus"></i>
-                                        Registrar Nueva Orden
+                                        [[#{ventas.registrar-nueva-orden}]]
                                     </a>
                                 </h5>
                                 <p class="card-text ml-4">Registra una orden nueva para agregarla a la lista de pendientes.</p>
@@ -57,7 +59,7 @@ and open the template in the editor.
                                 <h5 class="card-title">
                                     <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/menu}"> 
                                         <i class="fas fa-blender"></i>
-                                        [[#{ventas.nueva-orden}]]
+                                        [[#{ventas.atender-orden}]]
                                     </a>
                                 </h5>
                                 <p class="card-text ml-4">Consulta todas las bebidas disponibles en nuestro negocio, preparados con el maximo cuidado y cariño.</p>
@@ -72,7 +74,7 @@ and open the template in the editor.
                                 <h5 class="card-title">
                                     <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/menu}"> 
                                         <i class="fas fa-list-ol"></i>
-                                        Consultar Lista de Ordenes
+                                        [[#{ventas.consultar-lista-ordenes}]]
                                     </a>
                                 </h5>
                                 <p class="card-text ml-4">Consulta todas las bebidas disponibles en nuestro negocio, preparados con el maximo cuidado y cariño.</p>

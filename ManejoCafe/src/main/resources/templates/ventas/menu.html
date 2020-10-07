@@ -13,6 +13,11 @@ and open the template in the editor.
     </head>
     <body>
         <header th:replace="/layouts/plantilla1 :: header"></header>
+        <div class="alert  w-75 mx-auto mt-4" role="alert" style="background-color: #5b3924">
+            <h2 style="color : #f2eadc" class="card-title ml-4 mt-2">
+                Menú
+            </h2>
+        </div>
         <div th:if="${platillos != null and !platillos.empty}">
             <div class="container mt-4">
                 <div th:each="platillo : ${platillos}">
@@ -23,10 +28,16 @@ and open the template in the editor.
                             </div>
                             <div class="col-md-10 ">
                                 <div class="card-body  w-1000">
-                                    <h5 class="card-title" >[[${platillo.nombre}]]</h5>
-                                    <p class="card-text">[[${platillo.descripcion}]]</p>
-                                    <p class="card-text">Q. [[${platillo.precio}]]</p>
-                                    
+                                    <h4 class="card-title " >
+                                        <a th:href="@{/ventas/menu/} + ${platillo.idMenu}" class="text-decoration-none" style="color: #320000" >
+                                            [[${platillo.nombre}]]
+                                        </a>
+                                    </h4>
+                                    <h5 class="card-text font-wight-bold ml-2" style="color: #5b3924">[[#{platillo.descripcion}]]</h5>
+                                    <p class="card-text ml-4 " style="color: #5b3924">[[${platillo.descripcion}]]</p>
+                                    <h5 class="card-text font-wight-bold ml-2" style="color: #5b3924">[[#{platillo.precio}]]</h5>
+                                    <p class="card-text ml-4" style="color: #5b3924">Q. [[${platillo.precio}]]</p>
+
                                 </div>
                             </div>
                         </div>

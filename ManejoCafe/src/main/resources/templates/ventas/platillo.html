@@ -13,7 +13,47 @@ and open the template in the editor.
     </head>
     <body>
         <header th:replace="/layouts/plantilla1 :: header"></header>
-        
+
+
+        <div class="container mt-4">
+            <div class="card bg-light mb-3 w-100"  >
+                <div class="card-header " style="background-color: #5b3924">
+                    <h2 style="color : #f2eadc" class="card-title ml-2 mt-2">
+                        [[${platillo.nombre}]]
+                    </h2>
+                </div>
+                <img src="..." class="card-img-top" alt="..."/>
+                <div class="card-body">
+                    <h5 class="card-title ml-4"  style="color: #5b3924"> [[#{platillo.descripcion}]]:</h5>
+                    <p class="card-text ml-5">[[${platillo.descripcion}]]</p>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title ml-4"  style="color: #5b3924">[[#{platillo.precio}]]</h5>
+                    <p class="card-text ml-5"> Q. [[${platillo.precio}]]</p>
+                </div>
+                <div class="card-body"  sec:authorize="!hasRole('ROLE_CLIENTE')">
+                    <h5 class="card-title ml-4"  style="color: #5b3924">[[#{platillo.receta}]]</h5>
+                    <p class="card-text ml-5">[[${platillo.receta}]]</p>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title ml-4"  style="color: #5b3924">[[#{platillo.estado}]]</h5>
+                    <p class="card-text ml-5" th:if="${platillo.estado ==  '1'}">
+                        Disponible
+                    </p>
+                    <p class="card-text ml-5" th:if="${platillo.estado != '1'}">
+                        No Disponible
+                    </p>
+                </div>
+                <div class="card-body">
+                    <a th:href='@{/ventas/menu}' class='btn btn-danger'>
+                        [[#{boton.regresar}]]
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+
+
         <footer th:replace="/layouts/plantilla1 :: footer"></footer>
     </body>
 </html>
