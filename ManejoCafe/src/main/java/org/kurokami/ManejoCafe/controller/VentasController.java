@@ -6,7 +6,10 @@
 package org.kurokami.ManejoCafe.controller;
 
 import org.kurokami.ManejoCafe.Modelo.Menu;
+import org.kurokami.ManejoCafe.service.VentasService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -16,13 +19,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class VentasController {
     
+    @Autowired
+    VentasService ventasService;
+    
     @GetMapping("/ventas/")
     public String mainVentas(){
         return "/ventas/index";
     }
     
     @GetMapping("/ventas/menu")
-    public String menuVentas(){
+    public String menuVentas(Model model){
+        var platillos = ventasService.getTodosLosPlatillos();
+        model.addAttribute("platillos", platillos);
         return "/ventas/menu";
     }
     

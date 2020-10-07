@@ -13,7 +13,76 @@ and open the template in the editor.
     </head>
     <body>
         <header th:replace="/layouts/plantilla1 :: header"></header>
-        
+        <h2 class="ml-3">
+            Ventas
+        </h2>
+        <div class="container">
+            <div class="card-deck">
+                <div class=" row row-cols-3 row-cols-md-2">
+                    <div class="col mb-4">
+                        <div class="card">
+                            <img src="..." class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/menu}"> 
+                                        <i class="fas fa-book-reader"></i>
+                                        Consultar Menú
+                                    </a>
+                                </h5>
+                                <p class="card-text ml-4">Consulta todas las bebidas disponibles en nuestro negocio, preparados con el maximo cuidado y cariño.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card">
+                            <img src="..." class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/menu}"> 
+                                        <i class="fas fa-plus"></i>
+                                        Registrar Nueva Orden
+                                    </a>
+                                </h5>
+                                <p class="card-text ml-4">Registra una orden nueva para agregarla a la lista de pendientes.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col mb-4">
+                        <div class="card">
+                            <img src="..." class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/menu}"> 
+                                        <i class="fas fa-blender"></i>
+                                        [[#{ventas.nueva-orden}]]
+                                    </a>
+                                </h5>
+                                <p class="card-text ml-4">Consulta todas las bebidas disponibles en nuestro negocio, preparados con el maximo cuidado y cariño.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card">
+                            <img src="..." class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/menu}"> 
+                                        <i class="fas fa-list-ol"></i>
+                                        Consultar Lista de Ordenes
+                                    </a>
+                                </h5>
+                                <p class="card-text ml-4">Consulta todas las bebidas disponibles en nuestro negocio, preparados con el maximo cuidado y cariño.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <footer th:replace="/layouts/plantilla1 :: footer"></footer>
     </body>
 </html>

@@ -13,7 +13,18 @@ and open the template in the editor.
     </head>
     <body>
         <header th:replace="/layouts/plantilla1 :: header"></header>
-        
+        <div th:if="${platillos != null and !platillos.empty}">
+            <table border="1">
+                <tr>
+                    <th>Nombre platillo</th>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${platillos == null or personas.empty}">
+            <p>
+                No hay platillos para desplegar
+            </p>
+        </div>
         <footer th:replace="/layouts/plantilla1 :: footer"></footer>
     </body>
 </html>
