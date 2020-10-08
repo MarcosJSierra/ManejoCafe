@@ -18,16 +18,14 @@ and open the template in the editor.
                 Menú
             </h2>
         </div>
+
         <div th:if="${platillos != null and !platillos.empty}">
             <div class="container mt-4">
-                <div th:each="platillo : ${platillos}">
-                    <div class="card mb-3" style="max-width: 800x;" >
-                        <div class="row no-gutters">
-                            <div class="col-md-2">
-                                <img src="..." class="card-img" alt="..."/>
-                            </div>
-                            <div class="col-md-10 ">
-                                <div class="card-body  w-1000">
+                <div class="row row-cols-1 row-cols-md-3">
+                        <div th:each="platillo : ${platillos}" class="col mb-4">
+                            <div class="card h-100">
+                                <img th:src="@{/images/} + ${platillo.imagen}" class="card-img-top" alt="..."/>
+                                <div class="card-body">
                                     <h4 class="card-title " >
                                         <a th:href="@{/ventas/menu/} + ${platillo.idMenu}" class="text-decoration-none" style="color: #320000" >
                                             [[${platillo.nombre}]]
@@ -37,14 +35,13 @@ and open the template in the editor.
                                     <p class="card-text ml-4 " style="color: #5b3924">[[${platillo.descripcion}]]</p>
                                     <h5 class="card-text font-wight-bold ml-2" style="color: #5b3924">[[#{platillo.precio}]]</h5>
                                     <p class="card-text ml-4" style="color: #5b3924">Q. [[${platillo.precio}]]</p>
-
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
+
         <div th:if="${platillos == null or platillos.empty}">
             <p>
                 No hay platillos para desplegar

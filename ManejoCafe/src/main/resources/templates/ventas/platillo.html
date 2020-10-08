@@ -22,7 +22,7 @@ and open the template in the editor.
                         [[${platillo.nombre}]]
                     </h2>
                 </div>
-                <img src="..." class="card-img-top" alt="..."/>
+                <img th:src="@{/images/} + ${platillo.imagen}" class="card-img-top" alt="..."/>
                 <div class="card-body">
                     <h5 class="card-title ml-4"  style="color: #5b3924"> [[#{platillo.descripcion}]]:</h5>
                     <p class="card-text ml-5">[[${platillo.descripcion}]]</p>

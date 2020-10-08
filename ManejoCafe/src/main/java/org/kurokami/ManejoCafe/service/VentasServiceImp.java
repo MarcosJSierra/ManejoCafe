@@ -23,7 +23,7 @@ public class VentasServiceImp implements VentasService{
     MenuDao menuDao;
     
     @Override
-    public Menu menuPorId(int id) {
+    public Menu menuPorId(Integer id) {
         return (Menu) menuDao.findById(id).orElse(null);
     }
 

@@ -13,7 +13,7 @@ import org.kurokami.ManejoCafe.Modelo.Menu;
  * @author marcos
  */
 public interface VentasService {
-    public Menu menuPorId(int id);
+    public Menu menuPorId(Integer id);
     
     public ArrayList<Menu> getTodosLosPlatillos();
 }
