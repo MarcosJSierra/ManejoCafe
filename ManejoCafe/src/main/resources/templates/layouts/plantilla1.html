@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:fragment="head">
+        <title>[[#{plantilla.titulo}]]</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <header th:fragment="header1">
+            <nav class="navbar navbar-expand-sm navbar-dark p-0" style="background-color: #320000">
+                <div class="container">
+                    <a th:href="@{/}" class="navbar-brand">
+                        <i class="fas fa-mug-hot"></i> [[#{plantilla.nombreEmpresa}]]
+                    </a>
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item px-2">
+                                <a th:href="@{/}" class="nav-link active" th:text="#{barra.titulo}"></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVentas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    [[#{ventas.titulo}]]
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
+                                    <a class="dropdown-item" th:href="@{/ventas/}">[[#{ventas.principal}]]</a>
+                                    <a class="dropdown-item" th:href="@{/ventas/menu}">[[#{ventas.ver-menu}]]</a>
+                                    <a class="dropdown-item" href="#" sec:authorize="hasAnyRole('ROLE_BARISTA','ROLE_ADMIN')">[[#{ventas.nueva-orden}]]</a>
+                                    <a class="dropdown-item" href="#" sec:authorize="hasAnyRole('ROLE_BARISTA','ROLE_ADMIN')">[[#{ventas.atender-orden}]]</a>
+                                    <a class="dropdown-item" href="#" sec:authorize="hasAnyRole('ROLE_BARISTA','ROLE_ADMIN')">[[#{ventas.cobrar-saldo}]]</a>
+                                </div>
+                            </li>
+                            <li class="nav-item mr-3 nav-item dropdown" sec:authorize="isAuthenticated()">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user"></i>
+                                    <span th:text="#{barra.bienvenido}">Bienvenido:</span>
+                                    <span sec:authentication="name">Usuario</span>
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" th:href="@{/cliente/registro}" sec:authorize="hasAnyRole('ROLE_BARISTA','ROLE_ADMIN')">[[#{barra.registrar-cliente}]]</a>
+                                    <a class="dropdown-item" th:href="@{/usuario/registro}" sec:authorize="hasRole('ROLE_ADMIN')">[[#{barra.registrar-usuario}]]</a>
+                                    <form method="POST" th:action="@{/logout}">
+                                        <a href="#" onclick="this.parentNode.submit();" class="dropdown-item">
+                                            <i class="fas fa-user-times"></i> [[#{barra.salir}]]
+                                        </a>
+                                    </form>
+
+                                </div>
+
+                            </li>
+                            <li class="mr-3 nav-item dropdown" sec:authorize="!isAuthenticated()">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user"></i>
+                                    <span th:text="#{barra.bienvenido}"></span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" th:href="@{/cliente/registro}">[[#{barra.registrar}]]</a>
+                                    <a th:href="@{/login}" class="dropdown-item">[[#{plantilla.iniciar-sesion}]]</a>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <footer th:fragment="footer" class=" text-white p-5" style="background-color: #ff9f1c">
+            <div class="container">
+                <div class="col">
+                    <p class="lead text-center">
+                        <a th:href="@{/(lang=es)}">ES</a>
+                        <a th:href="@{/(lang=en)}">EN</a>
+                        <span>[[#{plantilla.pie-pagina}]] &copy; <a href="https://entreunosyceros.home.blog/" target="_blank">Mi Blog</a></span>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+</html>
