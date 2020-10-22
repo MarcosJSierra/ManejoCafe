@@ -5,8 +5,11 @@
  */
 package org.kurokami.ManejoCafe.controller;
 
+import java.util.ArrayList;
 import lombok.extern.slf4j.Slf4j;
+import org.kurokami.ManejoCafe.Modelo.ColaOrdenes;
 import org.kurokami.ManejoCafe.Modelo.Menu;
+import org.kurokami.ManejoCafe.Modelo.Orden;
 import org.kurokami.ManejoCafe.service.VentasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +26,9 @@ public class VentasController {
     
     @Autowired
     VentasService ventasService;
+    
+    @Autowired
+    ColaOrdenes colaOrdenes;
     
     @GetMapping("/ventas/")
     public String mainVentas(){
@@ -41,5 +47,22 @@ public class VentasController {
         menu = ventasService.menuPorId(menu.getIdMenu());
         model.addAttribute("platillo", menu);
         return "ventas/platillo";
+    }
+    
+    @GetMapping("/ventas/cola-ordenes")
+    public String listaColaOrdenes(Model model){
+        var lista = colaOrdenes.getListaOrdenes();
+        model.addAttribute("lista", lista);
+        return "ventas/lista";
+    }
+    @GetMapping("/ventas/atender-orden")
+    public String atenderOrdenes(Model model){
+       var lista = colaOrdenes.getListaOrdenes();
+       
+        if(lista.isEmpty()){
+            model.addAttribute("lista", lista);
+            return "ventas/lista";
+        }
+        return "ventas/menu";
     }
 }

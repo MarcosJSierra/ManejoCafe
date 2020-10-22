@@ -35,52 +35,72 @@ and open the template in the editor.
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/menu}"> 
-                                        <i class="fas fa-plus"></i>
-                                        [[#{ventas.registrar-nueva-orden}]]
-                                    </a>
-                                </h5>
-                                <p class="card-text ml-4">Registra una orden nueva para agregarla a la lista de pendientes.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <div sec:authorize="hasAnyRole('ROLE_CLIENTE')">
+                        <div class="col mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/menu}"> 
+                                            <i class="fas fa-plus"></i>
+                                            [[#{ventas.registrar-nueva-orden}]]
+                                        </a>
+                                    </h5>
+                                    <p class="card-text ml-4">Registra una orden nueva para agregarla a la lista de pendientes.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/menu}"> 
-                                        <i class="fas fa-blender"></i>
-                                        [[#{ventas.atender-orden}]]
-                                    </a>
-                                </h5>
-                                <p class="card-text ml-4">Consulta todas las bebidas disponibles en nuestro negocio, preparados con el maximo cuidado y cariño.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <div sec:authorize="hasAnyRole('ROLE_BARISTA','ROLE_ADMIN')">
+                        <div class="col mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/menu}"> 
+                                            <i class="fas fa-plus"></i>
+                                            [[#{ventas.registrar-nueva-orden}]]
+                                        </a>
+                                    </h5>
+                                    <p class="card-text ml-4">Registra una orden nueva para agregarla a la lista de pendientes.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/menu}"> 
-                                        <i class="fas fa-list-ol"></i>
-                                        [[#{ventas.consultar-lista-ordenes}]]
-                                    </a>
-                                </h5>
-                                <p class="card-text ml-4">Consulta todas las bebidas disponibles en nuestro negocio, preparados con el maximo cuidado y cariño.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <div sec:authorize="hasAnyRole('ROLE_BARISTA','ROLE_ADMIN')">
+                        <div class="col mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/atender-orden}"> 
+                                            <i class="fas fa-blender"></i>
+                                            [[#{ventas.atender-orden}]]
+                                        </a>
+                                    </h5>
+                                    <p class="card-text ml-4">Consulta todas las bebidas disponibles en nuestro negocio, preparados con el maximo cuidado y cariño.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div sec:authorize="hasAnyRole('ROLE_BARISTA','ROLE_ADMIN')">
+                        <div class="col mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a class="ml-2 alert-link text-decoration-none" style="color: #5b3924" th:href="@{/ventas/cola-ordenes}"> 
+                                            <i class="fas fa-list-ol"></i>
+                                            [[#{ventas.consultar-lista-ordenes}]]
+                                        </a>
+                                    </h5>
+                                    <p class="card-text ml-4">Consulta todas las bebidas disponibles en nuestro negocio, preparados con el maximo cuidado y cariño.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <footer th:replace="/layouts/plantilla1 :: footer"></footer>
     </body>
 </html>

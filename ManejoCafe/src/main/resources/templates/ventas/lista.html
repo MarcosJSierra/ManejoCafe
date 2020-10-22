@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="/layouts/plantilla1 :: head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:replace="/layouts/plantilla1 :: header"></header>
+        <div class="container">
+            <div th:if="${lista != null and !lista.empty}">
+                <table>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Hora</th>
+                        <th>Total</th>
+                        <th>Opciones</th>
+                    </tr>
+                    <tr th:each="orden : ${lista}">
+                        <td>[[${orden.cliente.nombre}]]</td>
+                        <td>[[${orden.fechaOrden}]]</td>
+                        <td>[[${orden.total}]]</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div th:if="${lista == null or lista.empty}">
+                <div class="card text-center mt-5" >
+                    <div class="card-header" style="background-color: #5b3924">
+                        <h2 style="color : #f2eadc" class="mt-2">
+                            
+                            Cola de Ordenes
+                        </h2>
+                    </div>
+                    <div class="card-body" style="background-color: #f2d2b3">
+                        <h5 class="card-title" style="color : #5b3924" >No hay ordenes en cola</h5>
+                        <p class="card-text" style="color : #5b3924">La cola de ordenes esta vacia, agregue una orden nueva.</p>
+                        <a th:href="@{/ventas/}" class="btn btn-primary">Regresar a la Pagina Principal</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
