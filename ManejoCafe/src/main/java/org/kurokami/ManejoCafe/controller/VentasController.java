@@ -58,8 +58,7 @@ public class VentasController {
     @GetMapping("/ventas/atender-orden")
     public String atenderOrdenes(Model model){
        var lista = colaOrdenes.getListaOrdenes();
-       
-        if(lista.isEmpty()){
+        if(lista == null || lista.isEmpty()){
             model.addAttribute("lista", lista);
             return "ventas/lista";
         }

@@ -10,21 +10,17 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  *
  * @author marcos
  */
 @Configuration
-public class WebConfig implements WebMvcConfigurer{
-    
-    @Override
-    public void addViewControllers(ViewControllerRegistry registro){
-//        registro.addViewController("/").setViewName("mainsite/index");
-        registro.addViewController("/login");
+public class BeansVentas {
+        
+    @Bean()
+    @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+    public ColaOrdenes getColaOrdenes(){
+        return new ColaOrdenes();
     }
-
 }
