@@ -28,29 +28,30 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name="compra")
-public class Compra implements Serializable{
+@Table(name = "compra")
+public class Compra implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idCompra")
+    @Column(name = "idCompra")
     private Integer idCompra;
-    
+
     @NotNull
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    
+
     @NotEmpty
-    @Column(name="no_factura")
+    @Column(name = "no_factura")
     private String noFactura;
-    
+
     @NotNull
     @Min(value = 0)
     private double total;
-    
+
     @ManyToOne
-    @JoinColumn(name="idProveedor")
+    @JoinColumn(name = "idProveedor")
     private Proveedor proveedor;
-    
+
 }

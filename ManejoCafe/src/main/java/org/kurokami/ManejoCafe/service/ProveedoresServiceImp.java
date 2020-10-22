@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author malopez
  */
+@Service
 public class ProveedoresServiceImp implements ProveedoresService{
 
     @Autowired
