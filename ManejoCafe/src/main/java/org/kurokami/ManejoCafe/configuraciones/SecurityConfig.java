@@ -38,14 +38,12 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
-                .antMatchers("/ventas/admin/**")
-                    .hasAnyRole("USER", "ADMIN")
-                .antMatchers("/ventas/cliente/**")
-                    .hasAnyRole("USER", "ADMIN")
-                .antMatchers("/cliente/**")
-                    .hasAnyRole("USER", "ADMIN")
-                .antMatchers("/usuario/**")
-                    .hasAnyRole("USER", "ADMIN")
+                .antMatchers("/ventas/cola-ordenes")
+                    .hasAnyRole("BARISTA", "ADMIN")
+                .antMatchers("/ventas/atender-orden")
+                    .hasAnyRole("BARISTA", "ADMIN")
+                .antMatchers("/usuario/registro")
+                    .hasAnyRole("ADMIN")
                 .and()
                     .formLogin()
                     .loginPage("/login");

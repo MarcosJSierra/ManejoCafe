@@ -51,7 +51,8 @@ and open the template in the editor.
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" th:href="@{/cliente/registro}" sec:authorize="hasAnyRole('ROLE_BARISTA','ROLE_ADMIN')">[[#{barra.registrar-cliente}]]</a>
+                                    <a class="dropdown-item" th:href="@{/cliente/registro}" sec:authorize="!isAuthenticated()">[[#{barra.registrar-cliente}]]</a>
+                                    <a class="dropdown-item" th:href="@{/cliente/registro}" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_BARISTA')">[[#{barra.registrar-cliente}]]</a>
                                     <a class="dropdown-item" th:href="@{/usuario/registro}" sec:authorize="hasRole('ROLE_ADMIN')">[[#{barra.registrar-usuario}]]</a>
                                     <form method="POST" th:action="@{/logout}">
                                         <a href="#" onclick="this.parentNode.submit();" class="dropdown-item">
